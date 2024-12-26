@@ -1,8 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../context/AuthContext'
-import Spinner from '../components/Spinner'
+// import Spinner from '../components/Spinner'
+import dynamic from 'next/dynamic';
 
+
+// Dynamically import the spinner component with SSR disabled
+const Spinner = dynamic(() => 
+  import('../components/Spinner'), { ssr: false }
+);
 
 const page = () => {
   const {user} = UserAuth();

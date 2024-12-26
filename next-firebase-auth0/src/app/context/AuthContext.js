@@ -1,7 +1,13 @@
 'use client'
 
 import { useContext, createContext, useState, useEffect } from 'react';
-import { signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { 
+    signInWithPopup, 
+    signOut, 
+    GoogleAuthProvider, 
+    GithubAuthProvider,
+    onAuthStateChanged 
+} from 'firebase/auth';
 import { auth } from '../firebase';
 
 const AuthContext = createContext();
@@ -11,6 +17,11 @@ export const AuthContextProvider = ({ children }) => {
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider);
+    }
+
+    const githubSignIn = () => {
+        const provider = new GithubAuthProvider();
         signInWithPopup(auth, provider);
     }
 
@@ -26,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, googleSignIn, logOut }}>
+        <AuthContext.Provider value={{ user, setUser, googleSignIn, githubSignIn, logOut }}>
             {children}
         </AuthContext.Provider>
     );
