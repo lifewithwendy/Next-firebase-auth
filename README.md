@@ -30,7 +30,7 @@ npm install
    - Enable Authentication and Google sign-in method
    - Get your Firebase configuration
 
-4. Create `.env.local` file in the root directory:
+4. Create `.env` file in the root directory:
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
